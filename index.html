@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Fotografía</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo">Ana Cristina</h1>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="menu" id="menu">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#gallery">Galería</a></li>
+                    <li><a href="#about">Acerca de</a></li>
+                    <li><a href="#specialties">Especialidades</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Capturo momentos, creo historias</h2>
+                <p>Estudiante de fotografía apasionada por reflejar la belleza en cada instante</p>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <h2>Mis Trabajos</h2>
+            <div class="carousel">
+                <div class="carousel-container" id="carouselContainer">
+                    <div class="carousel-slide active">
+                        <img src="images/photo-1.jpg" alt="Fotografía 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo-2.jpg" alt="Fotografía 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo-3.jpg" alt="Fotografía 3">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo-4.jpg" alt="Fotografía 4" class="vertical-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo-5.jpg" alt="Fotografía 5">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo-6.jpg" alt="Fotografía 6">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo-7.jpg" alt="Fotografía 7">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo-8.jpg" alt="Fotografía 8">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo-9.jpg" alt="Fotografía 9">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo-10.jpg" alt="Fotografía 10">
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="carousel-btn carousel-next" onclick="changeSlide(1)">&#10095;</button>
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="currentSlide(0)"></span>
+                    <span class="indicator" onclick="currentSlide(1)"></span>
+                    <span class="indicator" onclick="currentSlide(2)"></span>
+                    <span class="indicator" onclick="currentSlide(3)"></span>
+                    <span class="indicator" onclick="currentSlide(4)"></span>
+                    <span class="indicator" onclick="currentSlide(5)"></span>
+                    <span class="indicator" onclick="currentSlide(6)"></span>
+                    <span class="indicator" onclick="currentSlide(7)"></span>
+                    <span class="indicator" onclick="currentSlide(8)"></span>
+                    <span class="indicator" onclick="currentSlide(9)"></span>
+                </div>
+            </div>
+            <div class="fullscreen-hint">💡 Haz clic en la imagen para verla a pantalla completa</div>
+        </section>
+
+        <!-- Modal Fullscreen -->
+        <div id="fullscreenModal" class="fullscreen-modal">
+            <div class="fullscreen-content">
+                <button class="fullscreen-close" onclick="closeFullscreen()">&times;</button>
+                <img id="fullscreenImg" src="" alt="Fotografía a pantalla completa">
+                <button class="fullscreen-nav fullscreen-prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="fullscreen-nav fullscreen-next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
+        </div>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>Acerca de Mí</h2>
+                <p>Soy Ana Cristina, estudiante de fotografía apasionada por capturar momentos únicos y especiales. 
+                   A través de mis estudios, estoy desarrollando habilidades en diversos géneros fotográficos 
+                   incluyendo retratos, paisajes, naturaleza y fotografía artística.</p>
+            </div>
+        </section>
+
+        <section id="specialties" class="specialties">
+            <div class="container">
+                <h2>Mis Especialidades</h2>
+                <div class="specialties-grid">
+                    <div class="specialty-card">
+                        <h3>Retratos</h3>
+                        <p>Capturando la esencia y personalidad de las personas a través de composiciones cuidadas y buena iluminación.</p>
+                    </div>
+                    <div class="specialty-card">
+                        <h3>Paisajes</h3>
+                        <p>Explorando la belleza natural del entorno, jugando con luces, sombras y perspectivas únicas.</p>
+                    </div>
+                    <div class="specialty-card">
+                        <h3>Naturaleza y Vida Salvaje</h3>
+                        <p>Documentando la flora y fauna con paciencia, técnica y respeto por el medio ambiente.</p>
+                    </div>
+                    <div class="specialty-card">
+                        <h3>Fotografía Artística</h3>
+                        <p>Creando composiciones creativas y experimentales que transmiten emociones y mensajes visuales.</p>
+                    </div>
+                    <div class="specialty-card">
+                        <h3>Edición y Post-procesamiento</h3>
+                        <p>Dominando herramientas de edición para realzar colores, contraste y crear imágenes impactantes.</p>
+                    </div>
+                    <div class="specialty-card">
+                        <h3>Composición Visual</h3>
+                        <p>Aplicando principios fundamentales como regla de tercios, simetría y balance en cada captura.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Portafolio de Ana Cristina. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
