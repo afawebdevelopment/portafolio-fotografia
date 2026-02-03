@@ -10,7 +10,7 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <h1 class="logo">Ana Cristina</h1>
+                <img src="./firma/Firma-1.png" alt="Firma de Ana Cristina" class="logo-signature">
                 <button class="menu-toggle" id="menuToggle">
                     <span></span>
                     <span></span>
@@ -36,71 +36,89 @@
 
         <section id="gallery" class="gallery">
             <h2>Mis Trabajos</h2>
-            <div class="carousel">
-                <div class="carousel-container" id="carouselContainer">
-                    <div class="carousel-slide active">
-                        <img src="images/photo-1.jpg" alt="Fotografía 1">
+            <div class="gallery-container">
+                <div class="gallery-grid">
+                    <div class="gallery-card">
+                        <img src="images/photo-1.jpg" alt="Fotografía 1" loading="lazy">
+                        <div class="card-overlay">
+                            <p>Fotografía 1</p>
+                        </div>
                     </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo-2.jpg" alt="Fotografía 2">
+                    <div class="gallery-card">
+                        <img src="images/photo-2.jpg" alt="Fotografía 2" loading="lazy">
+                        <div class="card-overlay">
+                            <p>Fotografía 2</p>
+                        </div>
                     </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo-3.jpg" alt="Fotografía 3">
+                    <div class="gallery-card">
+                        <img src="images/photo-3.jpg" alt="Fotografía 3" loading="lazy">
+                        <div class="card-overlay">
+                            <p>Fotografía 3</p>
+                        </div>
                     </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo-4.jpg" alt="Fotografía 4" class="vertical-image">
+                    <div class="gallery-card">
+                        <img src="images/photo-4.jpg" alt="Fotografía 4" loading="lazy">
+                        <div class="card-overlay">
+                            <p>Fotografía 4</p>
+                        </div>
                     </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo-5.jpg" alt="Fotografía 5">
+                    <div class="gallery-card">
+                        <img src="images/photo-5.jpg" alt="Fotografía 5" loading="lazy">
+                        <div class="card-overlay">
+                            <p>Fotografía 5</p>
+                        </div>
                     </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo-6.jpg" alt="Fotografía 6">
+                    <div class="gallery-card">
+                        <img src="images/photo-6.jpg" alt="Fotografía 6" loading="lazy">
+                        <div class="card-overlay">
+                            <p>Fotografía 6</p>
+                        </div>
                     </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo-7.jpg" alt="Fotografía 7">
+                    <div class="gallery-card">
+                        <img src="images/photo-7.jpg" alt="Fotografía 7" loading="lazy">
+                        <div class="card-overlay">
+                            <p>Fotografía 7</p>
+                        </div>
                     </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo-8.jpg" alt="Fotografía 8">
+                    <div class="gallery-card">
+                        <img src="images/photo-8.jpg" alt="Fotografía 8" loading="lazy">
+                        <div class="card-overlay">
+                            <p>Fotografía 8</p>
+                        </div>
                     </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo-9.jpg" alt="Fotografía 9">
+                    <div class="gallery-card">
+                        <img src="images/photo-9.jpg" alt="Fotografía 9" loading="lazy">
+                        <div class="card-overlay">
+                            <p>Fotografía 9</p>
+                        </div>
                     </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo-10.jpg" alt="Fotografía 10">
+                    <div class="gallery-card">
+                        <img src="images/photo-10.jpg" alt="Fotografía 10" loading="lazy">
+                        <div class="card-overlay">
+                            <p>Fotografía 10</p>
+                        </div>
                     </div>
-                </div>
-                <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)">&#10094;</button>
-                <button class="carousel-btn carousel-next" onclick="changeSlide(1)">&#10095;</button>
-                <div class="carousel-indicators">
-                    <span class="indicator active" onclick="currentSlide(0)"></span>
-                    <span class="indicator" onclick="currentSlide(1)"></span>
-                    <span class="indicator" onclick="currentSlide(2)"></span>
-                    <span class="indicator" onclick="currentSlide(3)"></span>
-                    <span class="indicator" onclick="currentSlide(4)"></span>
-                    <span class="indicator" onclick="currentSlide(5)"></span>
-                    <span class="indicator" onclick="currentSlide(6)"></span>
-                    <span class="indicator" onclick="currentSlide(7)"></span>
-                    <span class="indicator" onclick="currentSlide(8)"></span>
-                    <span class="indicator" onclick="currentSlide(9)"></span>
                 </div>
             </div>
-            <div class="fullscreen-hint">💡 Haz clic en la imagen para verla a pantalla completa</div>
         </section>
 
         <!-- Modal Fullscreen -->
         <div id="fullscreenModal" class="fullscreen-modal">
-            <div class="fullscreen-content">
-                <button class="fullscreen-close" onclick="closeFullscreen()">&times;</button>
+            <div class="fullscreen-container">
+                <button class="fullscreen-close" id="closeFullscreen">&times;</button>
                 <img id="fullscreenImg" src="" alt="Fotografía a pantalla completa">
-                <button class="fullscreen-nav fullscreen-prev" onclick="changeSlide(-1)">&#10094;</button>
-                <button class="fullscreen-nav fullscreen-next" onclick="changeSlide(1)">&#10095;</button>
+                <button class="fullscreen-nav fullscreen-prev" id="prevBtn">&#10094;</button>
+                <button class="fullscreen-nav fullscreen-next" id="nextBtn">&#10095;</button>
+                <div class="fullscreen-counter">
+                    <span id="currentPhoto">1</span> / <span id="totalPhotos">10</span>
+                </div>
             </div>
         </div>
 
         <section id="about" class="about">
             <div class="container">
                 <h2>Acerca de Mí</h2>
-                <p>Soy Ana Cristina, estudiante de fotografía apasionada por capturar momentos únicos y especiales. 
+                <p>Estudiante de fotografía apasionada por capturar momentos únicos y especiales. 
                    A través de mis estudios, estoy desarrollando habilidades en diversos géneros fotográficos 
                    incluyendo retratos, paisajes, naturaleza y fotografía artística.</p>
             </div>
@@ -140,10 +158,15 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Portafolio de Ana Cristina. Todos los derechos reservados.</p>
+        <div class="footer-content">
+            <div class="signature-section">
+                <h3>Con dedicación y pasión,</h3>
+                <img src="./firma/Firma-1.png" alt="Firma de Ana Cristina" class="signature">
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-text">&copy; 2026 Portafolio de Fotografía. Todos los derechos reservados.</p>
+        </div>
     </footer>
-
-    <script src="script.js"></script>
 
     <script src="script.js"></script>
 </body>

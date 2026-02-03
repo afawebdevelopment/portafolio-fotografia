@@ -18,80 +18,92 @@ menuLinks.forEach(link => {
     });
 });
 
-// Fullscreen Modal
-function openFullscreen() {
-    const modal = document.getElementById('fullscreenModal');
-    const img = document.querySelector('.carousel-slide.active img');
-    const fullscreenImg = document.getElementById('fullscreenImg');
-    
-    fullscreenImg.src = img.src;
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
+// ==================== FULLSCREEN GALLERY ====================
 
-function closeFullscreen() {
-    const modal = document.getElementById('fullscreenModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
+const galleryCards = document.querySelectorAll('.gallery-card');
+const fullscreenModal = document.getElementById('fullscreenModal');
+const fullscreenImg = document.getElementById('fullscreenImg');
+const closeBtn = document.getElementById('closeFullscreen');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const currentPhotoSpan = document.getElementById('currentPhoto');
+const totalPhotosSpan = document.getElementById('totalPhotos');
 
-// Abrir fullscreen al hacer clic en la imagen
-document.addEventListener('DOMContentLoaded', () => {
-    const carouselContainer = document.getElementById('carouselContainer');
-    if (carouselContainer) {
-        carouselContainer.addEventListener('click', openFullscreen);
-    }
-    
-    // Cerrar modal al hacer clic fuera de la imagen
-    document.getElementById('fullscreenModal').addEventListener('click', (e) => {
-        if (e.target.id === 'fullscreenModal') {
-            closeFullscreen();
-        }
+let currentPhotoIndex = 0;
+const photos = [];
+
+// Obtener todas las fotos
+galleryCards.forEach((card, index) => {
+    const img = card.querySelector('img');
+    photos.push({
+        src: img.src,
+        alt: img.alt
     });
     
-    // Cerrar modal con tecla Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeFullscreen();
-        }
+    // Evento click en cada card
+    card.addEventListener('click', () => {
+        currentPhotoIndex = index;
+        openFullscreen();
     });
 });
 
-// Carrusel de fotos
-let currentSlideIndex = 0;
-const totalSlides = document.querySelectorAll('.carousel-slide').length;
+// Actualizar el total de fotos
+totalPhotosSpan.textContent = photos.length;
 
-function showSlide(index) {
-    const slides = document.querySelectorAll('.carousel-slide');
-    const indicators = document.querySelectorAll('.indicator');
-    
-    if (index >= totalSlides) {
-        currentSlideIndex = 0;
-    } else if (index < 0) {
-        currentSlideIndex = totalSlides - 1;
-    } else {
-        currentSlideIndex = index;
+// Abrir fullscreen
+function openFullscreen() {
+    const photo = photos[currentPhotoIndex];
+    fullscreenImg.src = photo.src;
+    fullscreenImg.alt = photo.alt;
+    currentPhotoSpan.textContent = currentPhotoIndex + 1;
+    fullscreenModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Cerrar fullscreen
+function closeFullscreen() {
+    fullscreenModal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Navegar a la siguiente foto
+function nextPhoto() {
+    currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+    openFullscreen();
+}
+
+// Navegar a la foto anterior
+function prevPhoto() {
+    currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+    openFullscreen();
+}
+
+// Event listeners para los botones
+closeBtn.addEventListener('click', closeFullscreen);
+nextBtn.addEventListener('click', nextPhoto);
+prevBtn.addEventListener('click', prevPhoto);
+
+// Cerrar modal al hacer clic fuera de la imagen
+fullscreenModal.addEventListener('click', (e) => {
+    if (e.target === fullscreenModal) {
+        closeFullscreen();
     }
+});
+
+// Teclas de navegación
+document.addEventListener('keydown', (e) => {
+    if (!fullscreenModal.classList.contains('active')) return;
     
-    slides.forEach(slide => slide.classList.remove('active'));
-    indicators.forEach(indicator => indicator.classList.remove('active'));
-    
-    slides[currentSlideIndex].classList.add('active');
-    indicators[currentSlideIndex].classList.add('active');
-}
+    if (e.key === 'Escape') {
+        closeFullscreen();
+    } else if (e.key === 'ArrowRight') {
+        nextPhoto();
+    } else if (e.key === 'ArrowLeft') {
+        prevPhoto();
+    }
+});
 
-function changeSlide(n) {
-    showSlide(currentSlideIndex + n);
-}
-
-function currentSlide(n) {
-    showSlide(n);
-}
-
-// Auto-avanzar el carrusel cada 5 segundos
-setInterval(() => {
-    changeSlide(1);
-}, 5000);
+// ==================== SMOOTH SCROLL ====================
 
 // Suavizar el desplazamiento al hacer clic en los links
 document.querySelectorAll('a[href^="#"]').forEach(link => {
